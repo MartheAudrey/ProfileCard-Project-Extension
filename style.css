@@ -1,0 +1,193 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root{
+    --space-1: 0.5rem;
+    --space-2: 1rem;
+    --space-3: 2rem;
+
+    --twinkle-blue: #d1d8e0;
+    --innuendo: #a5b1c2;
+    --blue-hob: #4b6584;
+    --bg-color: #E9EDF1;
+    --lime-cream: #CFEE9E;
+    --deep-space-blue: #2C3D55;
+    --apricot-cream: #F9C784;
+    --crd-bg-color: white;
+    --txt-color: black;
+}
+
+body[data-theme="dark"]{
+    --bg-color: #0A111B;
+    --crd-bg-color: #111C2D;
+    --txt-color: #E9EDF1;
+    --twinkle-blue: #1F3657;
+    --deep-space-blue: #2E4D7C;
+}
+
+body[data-theme="dark"] :is(.flex-group, a) {
+    color: var(--innuendo);
+}
+
+body[data-theme="dark"] .card__link a:hover{
+    color: var(--twinkle-blue);
+}
+
+body[data-theme="dark"] .card__user-role{
+    color: var(--lime-cream);
+}
+
+img,
+svg{
+    display: block;
+    max-width: 100%;
+}
+
+button{
+    font-family: inherit;
+    font-size: inherit;
+}
+
+body{
+    min-height: 100vh;
+    font-family: "Work Sans";
+    background-color: var(--bg-color);
+    display: grid;
+    place-items: center;
+    gap: var(--space-3);
+    padding: var(--space-3);
+}
+
+.sr-only{
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+}
+
+.card{
+    background-color: var(--crd-bg-color);
+    max-width: 400px;
+    padding: var(--space-3);
+    border-radius: 1rem;
+    display: grid;
+    gap: var(--space-2);
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.2);
+    position: relative;
+    color: var(--txt-color);
+}
+
+.card::before{
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-color: var(--lime-cream);
+    z-index: -1;
+    border-radius: inherit;
+    transform: rotate(0deg);
+    opacity: 0;
+    transition: transform 300ms ease, opacity 300ms ease;
+}
+
+.card:hover::before{
+    transform: rotate(-6deg) scale(1);
+    opacity: 1;
+}
+
+.card__user-info{
+    display: grid;
+    gap: var(--space-2);
+    justify-items: center;
+    text-align: center;
+}
+
+.card__user-info img{
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+    aspect-ratio: 1;
+}
+
+
+.card__user-name{
+    font-family: "Playwrite GB J Guides"
+}
+
+.card__user-role{
+    color: var(--deep-space-blue);
+}
+
+ul{
+    list-style: none;
+}
+
+h3{
+    margin-bottom: var(--space-2);
+}
+
+.flex-group{
+    display: flex;
+    gap: var(--space-1);
+    flex-wrap: wrap;
+    color: var(--deep-space-blue);
+}
+
+.card__skill,
+.card__hobby,
+.card__link{
+    background-color: var(--twinkle-blue);
+    padding: var(--space-1);
+    border-radius: 10px;
+}
+
+button{
+    border: none;
+    padding: var(--space-1);
+    border-radius: 10px;
+    background-color: var(--deep-space-blue);
+    color: white;
+    font-weight: 600;
+    cursor: pointer;
+    transition: transform 0.2s ease-in-out;
+}
+
+button:hover{
+    animation: go-up-down 0.6s ease-in-out;
+}
+
+@keyframes go-up-down {
+    0% {
+        transform: translateY(0);
+    }
+    25%{
+        transform: translateY(-10px);
+    }
+    50%{
+        transform: translateY(0px);
+    }
+    75%{
+        transform: translateY(-10px);
+    }
+    100%{
+        transform: translateY(0);
+    }
+}
+
+.card__link a {
+    text-decoration: none;
+    color: var(--deep-space-blue);
+}
+
+.card__link{
+    transition: transform 0.3s ease;
+}
+
+.card__link:hover{
+    background-color: var(--lime-cream);
+    transform: translateY(-3px);
+}
